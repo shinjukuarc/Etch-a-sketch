@@ -34,6 +34,12 @@ rgbOpaque.addEventListener('click', ()=> {
     rgbOpaque.id='highlight'
 })
 
+const clear=document.querySelector('.clear')
+clear.addEventListener('click', ()=>{
+const squares=document.querySelectorAll('.square')
+squares.forEach(element=> element.style['background-color']='transparent')
+})
+
 const changeColor=(x,y,z)=> {
     let opacity=y/10;
     if (currentClass==='black') {
