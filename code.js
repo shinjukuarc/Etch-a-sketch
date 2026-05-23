@@ -1,45 +1,37 @@
-const body=document.querySelector('body')
-const container=document.createElement('div')
-container.classList.add('container')
-body.appendChild(container)
+const program=document.querySelector('.program')
+const container=document.querySelector('.container')
+program.appendChild(container)
+const bigSquare=document.createElement('div')
+bigSquare.classList.add('big-square')
+container.appendChild(bigSquare)
 
+const allButtons=document.querySelectorAll('button')
 const black=document.querySelector('.black')
 const darken=document.querySelector('.intensify.BW')
 const rgb=document.querySelector('.rgb')
 const rgbOpaque=document.querySelector('.intensify.RGB')
 let currentClass='black'
-
-darken.classList.remove('intensify', 'BW')
-rgb.classList.remove('rgb')
-rgbOpaque.classList.remove('intensify', 'RGB')
+black.id='highlight'
 
 black.addEventListener('click', ()=> {
-    black.classList.add('black')
-    darken.classList.remove('intensify', 'BW')
-    rgb.classList.remove('rgb')
-    rgbOpaque.classList.remove('intensify', 'RGB')
     currentClass='black'
+    allButtons.forEach(element=> {element.id=''})
+    black.id='highlight'
 })
 darken.addEventListener('click', ()=> {
-    darken.classList.add('intensify', 'BW')
-    black.classList.remove('black')
-    rgb.classList.remove('rgb')
-    rgbOpaque.classList.remove('intensify', 'RGB')
     currentClass='darken'
+    allButtons.forEach(element=> {element.id=''})
+    darken.id='highlight'
 })
 rgb.addEventListener('click', ()=> {
-    rgb.classList.add('rgb')
-    darken.classList.remove('intensify', 'BW')
-    black.classList.remove('black')
-    rgbOpaque.classList.remove('intensify', 'RGB')
     currentClass='rgb'
+    allButtons.forEach(element=> {element.id=''})
+    rgb.id='highlight'
 })
 rgbOpaque.addEventListener('click', ()=> {
-    rgbOpaque.classList.add('intensify', 'RGB')
-    darken.classList.remove('intensify', 'BW')
-    black.classList.remove('black')
-    rgb.classList.remove('rgb')
     currentClass='rgbOpaque'
+    allButtons.forEach(element=> {element.id=''})
+    rgbOpaque.id='highlight'
 })
 
 const changeColor=(x,y,z)=> {
@@ -65,7 +57,7 @@ for (let r=0; r<16; r++) {
     colors[r]=[]
     let rectangle=document.createElement('div')
     rectangle.classList.add('rectangle')
-    container.appendChild(rectangle)
+    bigSquare.appendChild(rectangle)
     for (let c=0; c<16; c++) {
         let square=document.createElement('div')
         square.classList.add('square')
