@@ -74,3 +74,48 @@ for (let r=0; r<16; r++) {
     }
 }
 
+let rows=document.querySelector('.row-amount')
+let cols=document.querySelector('.col-amount')
+let createBtn=document.querySelector('.create')
+
+let createSquares=()=> {
+    if (+rows.value>0 &&+rows.value<=72 && +cols.value>0 &&+cols.value<=100)  {
+        bigSquare.innerHTML=''
+        hovered=[]
+        colors=[]
+        for (let row=0; row<+rows.value; row++) {
+            hovered[row]=[]
+            colors[row]=[]
+            let rectangle=document.createElement('div')
+            rectangle.classList.add('rectangle')
+            bigSquare.appendChild(rectangle)
+            for (let col=0; col<+cols.value; col++) {
+                let square=document.createElement('div')
+                square.classList.add('square')
+                rectangle.appendChild(square)
+                if (+rows.value>54 || +cols.value>88) {
+                    square.style['padding']='5px'
+                } else if ((+rows.value<=54 && +rows.value>30) || (+cols.value<=88 && +cols.value>62)) {
+                    square.style['padding']='7px'
+                }
+                hovered[row][col]=0
+                colors[row][col]=[Math.floor(Math.random()*256),Math.floor(Math.random()*256),Math.floor(Math.random()*256)]
+                square.addEventListener('mouseenter', (e)=>{if (hovered[row][col]!==10) hovered[row][col]++; changeColor(e.target,hovered[row][col],colors[row][col])})
+            }
+        }
+    }
+}
+
+createBtn.addEventListener('click', ()=> {
+    createSquares()
+})
+rows.addEventListener('keydown', (e)=> {
+    if (e.key==='Enter') {
+        createSquares()
+    }
+})
+cols.addEventListener('keydown', (e)=> {
+    if (e.key==='Enter') {
+        createSquares()
+    }
+})

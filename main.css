@@ -7,7 +7,6 @@ body {
     align-items: center;
     height: 95vh;
     gap: 32px;
-
 }
 .button-container {
     display: flex;
@@ -56,4 +55,31 @@ button {
 }
 #highlight {
     box-shadow: 0 0 12px rgb(255, 0, 0);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    align-items: center;
+}
+input {
+    font-size: 16px;
+    height: 3vh;
+    width: 4vh;
+    text-align: center;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+.input-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 2vh;
 }
